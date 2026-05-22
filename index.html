@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-<title>Convite</title>
+<title>Agenda Semanal</title>
 
 <meta name="theme-color" content="#000000">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -21,16 +21,40 @@ html, body{
     height:100%;
     overflow:hidden;
     background:black;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-video{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100vw;
-    height:100vh;
-    object-fit:cover;
+/* CONTAINER */
+
+.video-container{
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
     background:black;
+
+}
+
+/* VIDEO */
+
+video{
+
+    width:auto;
+    height:100vh;
+
+    max-width:100vw;
+
+    object-fit:contain;
+
+    background:black;
+
 }
 
 </style>
@@ -39,9 +63,21 @@ video{
 
 <body>
 
-<video id="video" autoplay muted playsinline webkit-playsinline>
+<div class="video-container">
+
+<video 
+id="video" 
+autoplay 
+muted 
+playsinline 
+webkit-playsinline
+>
+
     <source src="Agenda Semanal.mp4" type="video/mp4">
+
 </video>
+
+</div>
 
 <script>
 
@@ -50,28 +86,26 @@ const video = document.getElementById("video");
 async function startVideo(){
 
     try{
+
+        // TENTA PLAY
         await video.play();
-    }catch(e){}
+
+        // TENTA FULLSCREEN AUTOMÁTICO
+        if(document.documentElement.requestFullscreen){
+
+            await document.documentElement.requestFullscreen();
+
+        }
+
+    }catch(e){
+
+        console.log(e);
+
+    }
 
 }
 
 startVideo();
-
-document.body.addEventListener("click", async () => {
-
-    video.muted = false;
-
-    try{
-        if(video.requestFullscreen){
-            await video.requestFullscreen();
-        }else if(video.webkitEnterFullscreen){
-            video.webkitEnterFullscreen();
-        }
-    }catch(e){}
-
-    video.play();
-
-});
 
 </script>
 
