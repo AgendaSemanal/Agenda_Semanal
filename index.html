@@ -3,14 +3,9 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Agenda Semanal</title>
-
-<meta name="theme-color" content="#000000">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 <style>
 
@@ -19,39 +14,69 @@ html, body{
     padding:0;
     width:100%;
     height:100%;
-    overflow:hidden;
     background:black;
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* ÁREA DO REEL */
+
+.video-container{
+
+    position:relative;
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
 }
 
 /* VIDEO */
 
 video{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    
-    /* ALTERAÇÃO IMPORTANTE */
+
+    width:auto;
+    height:90vh;
+
+    max-width:100vw;
+
     object-fit:contain;
 
+    border-radius:20px;
+
     background:black;
+
+    box-shadow:0 0 40px rgba(0,0,0,0.5);
+
 }
 
-/* BOTÃO OPCIONAL */
+/* BOTÃO */
 
 .play-button{
-    position:fixed;
+
+    position:absolute;
+
     bottom:40px;
+
     left:50%;
     transform:translateX(-50%);
+
     z-index:10;
 
     background:#0057ff;
+
     color:white;
+
     border:none;
 
-    padding:16px 30px;
+    padding:16px 34px;
+
     border-radius:50px;
 
     font-size:18px;
@@ -59,7 +84,8 @@ video{
 
     cursor:pointer;
 
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+
 }
 
 </style>
@@ -68,13 +94,19 @@ video{
 
 <body>
 
-<video id="video" autoplay muted playsinline webkit-playsinline>
-    <source src="Agenda Semanal.mp4" type="video/mp4">
-</video>
+<div class="video-container">
 
-<button class="play-button" id="btn">
-    ABRIR AGENDA
-</button>
+    <video id="video" autoplay muted playsinline webkit-playsinline>
+
+        <source src="Agenda Semanal.mp4" type="video/mp4">
+
+    </video>
+
+    <button class="play-button" id="btn">
+        ABRIR AGENDA
+    </button>
+
+</div>
 
 <script>
 
